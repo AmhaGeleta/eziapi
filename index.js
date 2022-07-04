@@ -34,10 +34,10 @@ app.use('/api/users', usersRoute);
 app.use('/api/hotels', hotelsRoute);
 app.use('/api/rooms', roomsRoute);
 
-app.use(express.static(path.join(__dirname, '/client/build/')));
+app.use(express.static(path.join(__dirname, '/client2/build/')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build/', 'index.html'));
+  res.sendFile(path.join(__dirname, '/client2/build/', 'index.html'));
 });
 
 app.use((err, req, res, next) => {
@@ -51,7 +51,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(process.env.PORT || 8080, () => {
+app.listen(process.env.PORT || 5002, () => {
   connect();
   console.log('Connected to backend.');
 });
