@@ -34,10 +34,11 @@ app.use('/api/users', usersRoute);
 app.use('/api/hotels', hotelsRoute);
 app.use('/api/rooms', roomsRoute);
 
-app.use(express.static(path.join(__dirname, '/client2/build/')));
+// app.use(express.static(path.join(__dirname, '/client2/build/')));
+app.use(express.static(path.resolve(__dirname, './client2/build')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client2/build/', 'index.html'));
+app.get('*', function (request, response) {
+  response.sendFile(path.resolve(__dirname, './client2/build', 'index.html'));
 });
 
 app.use((err, req, res, next) => {
