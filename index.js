@@ -7,10 +7,11 @@ import hotelsRoute from './routes/hotels.js';
 import roomsRoute from './routes/rooms.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import * as path from 'path';
 
 const app = express();
 dotenv.config();
-const path = require('path');
+// const path = require('path');
 
 const connect = async () => {
   try {
