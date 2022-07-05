@@ -10,6 +10,7 @@ import cors from 'cors';
 
 const app = express();
 dotenv.config();
+const path = require('path');
 
 const connect = async () => {
   try {
@@ -53,6 +54,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(process.env.PORT || 5002, function () {
+  connect();
   console.log(
     'Express server listening on port %d in %s mode',
     this.address().port,
