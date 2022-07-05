@@ -51,7 +51,10 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(process.env.PORT || 5002, () => {
-  connect();
-  console.log('Connected to backend.');
+app.listen(process.env.PORT || 5002, function () {
+  console.log(
+    'Express server listening on port %d in %s mode',
+    this.address().port,
+    app.settings.env
+  );
 });
