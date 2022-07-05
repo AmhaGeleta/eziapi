@@ -11,9 +11,9 @@ import useFetch from "../../hooks/useFetch";
 const List = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(location);
-  // const [dates, setDates] = useState(location.state.dates);
-  // const [openDate, setOpenDate] = useState(false);
-  // const [options, setOptions] = useState(location.state.options);
+  const [dates, setDates] = useState(location.state.dates);
+  const [openDate, setOpenDate] = useState(false);
+  const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
@@ -28,7 +28,7 @@ const List = () => {
   return (
     <div>
     {console.log(destination)}
-      {/* <Navbar />
+      <Navbar />
       <Header type="list" />
       <div className="listContainer">
         <div className="listWrapper">
@@ -118,7 +118,7 @@ const List = () => {
             )}
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
