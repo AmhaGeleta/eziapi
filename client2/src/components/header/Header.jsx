@@ -16,6 +16,7 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -64,7 +65,10 @@ const Header = ({ type }) => {
         <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faBed} />
-            <span>Stays</span>
+            <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+              <span>Stays</span>
+            </Link>
+         
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faPlane} />
@@ -115,7 +119,10 @@ const Header = ({ type }) => {
                 {openDate && (
                   <DateRange
                     editableDateInputs={true}
-                    onChange={(item) => setDates([item.selection])}
+                    onChange={(item) =>{ 
+                    
+      
+                    }}
                     moveRangeOnFirstSelection={false}
                     ranges={dates}
                     className="date"

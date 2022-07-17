@@ -1,8 +1,34 @@
 import useFetch from "../../hooks/useFetch";
 import "./propertyList.css";
 
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
+
 const PropertyList = () => {
   const { data, loading, error } = useFetch("/hotels/countByType");
+
+  let destination = "";
+  const [count, setCount] = useState(0);
+  const [dates, setDates] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+
+  const [options, setOptions] = useState({
+    adult: 1,
+    children: 0,
+    room: 1,
+  });
+
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
+  const { dispatch } = useContext(SearchContext);
 
   const images = [
     "https://cf.bstatic.com/xdata/images/xphoto/square300/57584488.webp?k=bf724e4e9b9b75480bbe7fc675460a089ba6414fe4693b83ea3fdd8e938832a6&o=",
@@ -24,6 +50,11 @@ const PropertyList = () => {
                   src={img}
                   alt=""
                   className="pListImg"
+                  onClick={() =>{
+                    destination = "Addis Ababa"
+                    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+                    navigate("/hotels", { state: { destination, dates, options } });
+                  }}
                 />
                 <div className="pListTitles">
                   <h1>{data[i]?.type}</h1>
