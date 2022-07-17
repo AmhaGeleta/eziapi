@@ -10,11 +10,14 @@ const PropertyList = () => {
   const { data, loading, error } = useFetch("/hotels/countByType");
 
   let destination = "";
+  const today = new Date();
+  let tomorrow = new Date();
+  tomorrow.setDate(today.getDate()+1);
   const [count, setCount] = useState(0);
   const [dates, setDates] = useState([
     {
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: today,
+      endDate: tomorrow,
       key: "selection",
     },
   ]);

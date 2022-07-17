@@ -10,10 +10,13 @@ const FeaturedProperties = () => {
   const { data, loading, error } = useFetch("/hotels?featured=true&limit=4");
   let destination = "";
   const [count, setCount] = useState(0);
+  const today = new Date();
+  let tomorrow = new Date();
+  tomorrow.setDate(today.getDate()+1);
   const [dates, setDates] = useState([
     {
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: today,
+      endDate: tomorrow,
       key: "selection",
     },
   ]);
